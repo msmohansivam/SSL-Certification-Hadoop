@@ -139,5 +139,5 @@ If you chose not to enable SSL for some components or decide to modify the scrip
 
   * https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.4.0/bk_Security_Guide/content/set_up_ssl_for_ambari.html
   * https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.4.0/bk_Security_Guide/content/ch_wire-webhdfs-mr-yarn.html
-  * https://github.com/vzlatkin/EnableSSLinHDP
+  
 
