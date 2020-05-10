@@ -1,4 +1,4 @@
-# SSL Certification-Session
+# SSL Certification Process for Hadoop Cluster
  Webinar for SSL Certification Process
  
 * Summary
