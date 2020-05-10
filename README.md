@@ -71,9 +71,9 @@ If you are using Ranger to secure anything besides HBase and HDFS then you will 
     1. Download the script enable-ssl.sh
 	
     2. Make changes to these variables inside of the script to reflect your cluster layout. The script uses these variables to generate        certificates and copy them to all machines where they are needed. Below is an example for my three node cluster.
-              server1="example1.hortonworks.com"
-              server2="example2.hortonworks.com"
-              server3="example3.hortonworks.com"
+              server1="cm.com"
+              server2="worker1.com"
+              server3="worker2.com"
               OOZIE_SERVER_ONE=$server2
               NAMENODE_SERVER_ONE=$server1
               RESOURCE_MANAGER_SERVER_ONE=$server3
@@ -87,17 +87,17 @@ If you are using Ranger to secure anything besides HBase and HDFS then you will 
               ALL_REAL_SERVERS="$server1 $server2 $server3"
               ALL_HADOOP_SERVERS="$server1 $server2 $server3"
               export AMBARI_SERVER=$server1
-              AMBARI_PASS=xxxx
-              CLUSTER_NAME=cluster1
+              AMBARI_PASS=P@ssw0rd
+              CLUSTER_NAME=mohandemo
 	
     3. If you are going to pay a Public CA to sign your server SSL certificates then copy them to /tmp/security and name them as such:
               ca.crt
-              example1.hortonworks.com.crt
-              example1.hortonworks.com.key
-              example2.hortonworks.com.crt
-              example2.hortonworks.com.key
-              example3.hortonworks.com.crt
-              example3.hortonworks.com.key
+              cm.com.crt
+              cm.com.key
+              worker1.com.crt
+              worker1.com.key
+              worker2.com.crt
+              worker2.key
               hortonworks.com.crt
               hortonworks.com.key
 	
@@ -129,8 +129,8 @@ If you chose not to enable SSL for some components or decide to modify the scrip
           keytool -list -storepass password -keystore /etc/hadoop/conf/hadoop-private-keystore.jks
 	
       4. View Ranger policies for HDFS
-          cat example1.hortonworks.com.key example1.hortonworks.com.crt  >> example1.hortonworks.com.pem
-          curl --cacert /tmp/security/ca.crt --cert /tmp/security/example1.hortonworks.com.pem                  "https://example1.hortonworks.com:6182/service/plugins/policies/download/cluster1_hadoop?lastKnownVersion=3&pluginId=hdfs@example1.hortonworks.com-cluster1_hadoop"
+          cat cm.com.key cm.com.crt  >> cm.com.pem
+          curl --cacert /tmp/security/ca.crt --cert /tmp/security/cm.com.pem                  "https://cm.com:6182/service/plugins/policies/download/mohandemo_hadoop?lastKnownVersion=3&pluginId=hdfs@cm.com-mohandemo_hadoop"
 	
       5. Validate that Ranger plugins can connect to Ranger admin server by searching for util.PolicyRefresher in HDFS NameNode and    HBase RegionServer log files
       
