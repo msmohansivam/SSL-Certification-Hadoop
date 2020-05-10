@@ -98,12 +98,6 @@ If you are using Ranger to secure anything besides HBase and HDFS then you will 
               worker1.com.key
               worker2.com.crt
               worker2.key
-              hortonworks.com.crt
-              hortonworks.com.key
-	
-    The last certificate is needed for Oozie if you have Oozie HA enabled. The CN of that certificate should be CN=*.domainname.com as       described hereIf you are NOT going to use a Public CA to sign your certificates, then change these lines in the script to be             relevant to your organization:
-    
-      /C=US/ST=New York/L=New York City/O=Hortonworks/OU=Consulting/CN=HortonworksCA
 	
     4. Stop all services via Ambari
     5. Execute:
